@@ -1,1 +1,5 @@
 Rencana Projek Javascript: Grade Nilai
+Misal:
+A=85-100
+B=60-84
+C=0-60
