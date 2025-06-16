@@ -1,12 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Belajar Git Remote</title>
+    <title>Grade Nilai</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .container {
+            display: flex;
+            gap: 40px;
+        }
+
+        .form_container,
+        .result_container {
+            flex: 1;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+
+        .form_group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: flex;
+            font-weight: bold;
+        }
+
+        input {
+            width: 200px;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 8px 16px;
+            font-weight: bold;
+        }
+
+        .result_container h3 {
+            margin-top: 0;
+        }
+
+        .result_container p {
+            font-weight: bold;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Hello world</h1>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque corrupti, atque dolor perferendis quasi neque dolores explicabo illo minus minima repellendus fugiat inventore velit! Voluptatem perferendis incidunt nihil error dolore.</p>
+    <h1>Silahkan Input Nilai:</h1>
+    <div class="container">
+
+        <div class="form_container">
+
+            <label for="Nama"> Nama:</label>
+            <input type="text" name="Nama" id="Nama">
+
+            <label for="Nilai_tugas"> Nilai Tugas:</label>
+            <input type="number" name="Nilai_tugas" id="Nilai_tugas">
+
+            <label for="Nilai_ulangan_harian"> Nilai Ulangan Harian:</label>
+            <input type="number" name="Nilai_ulangan_harian" id="Nilai_ulangan_harian">
+
+            <label for="Nilai_ulangan_UTS"> Nilai UTS:</label>
+            <input type="number" name="Nilai_ulangan_UTS" id="Nilai_ulangan_UTS">
+
+            <label for="Nilai_ulangan_UAS"> Nilai UAS:</label>
+            <input type="number" name="Nilai_ulangan_UAS" id="Nilai_ulangan_UAS">
+            <br>
+            <button onclick="simpanData()">Simpan</button>
+
+
+        </div>
+
+        <div class="result_container">
+            <h3>Hasilnya:</h3>
+
+            <p id="nama"></p>
+            <p id="nilaiTugas"></p>
+            <p id="nilaiHarian"></p>
+            <p id="nilaiUTS"></p>
+            <p id="nilaiUAS"></p><br>
+            <p id="nilai_Akhir"></p>
+            <p id="Grade"></p>
+
+        </div>
+    </div>
+
+    <script>
+
+        let Nama = document.getElementById('Nama')
+        var nTugas = document.getElementById('Nilai_tugas')
+        var nUlanganHarian = document.getElementById('Nilai_ulangan_harian')
+        var nUTS = document.getElementById('Nilai_ulangan_UTS')
+        var nUAS = document.getElementById('Nilai_ulangan_UAS')
+
+        var nilaiAkhir
+
+        var hNama = document.getElementById('nama')
+        var hTugas = document.getElementById('nilaiTugas')
+        var hUlanganHarian = document.getElementById('nilaiHarian')
+        var hUTS = document.getElementById('nilaiUTS')
+        var hUAS = document.getElementById('nilaiUAS')
+        var hNilaiAkhir = document.getElementById('nilai_Akhir')
+        var hGrade = document.getElementById('Grade')
+
+        if(!Nama.value){
+            alert
+        }
+
+        function nAkhir(nTugas, nUlanganHarian, nUTS, nUAS) {
+            return nilaiAkhir = nTugas * 0.2 + nUlanganHarian * 0.1 + nUTS * 0.3 + nUAS * 0.4
+        }
+
+        function gradeNilai(nilaiAkhir) {
+            if (nilaiAkhir >= 85 && nilaiAkhir <= 100) {
+                return 'A'
+            }
+            else if (nilaiAkhir >= 60 && nilaiAkhir <= 84.9) {
+                return 'B'
+            }
+            else if (nilaiAkhir >= 50 && nilaiAkhir < 60.9) {
+                return 'C'
+            }
+            else {
+                return 'D'
+            }
+        }
+
+        function simpanData() {
+            console.log("Tombol ditekan");
+            console.log(Nama.value)
+            console.log(nTugas.value)
+            console.log(nUlanganHarian.value)
+            console.log(nUTS.value)
+            console.log(nUAS.value)
+
+            hNama.innerText = 'Nama: ' + Nama.value
+            hTugas.innerText = 'Nilai Tugas: ' + nTugas.value
+            hUlanganHarian.innerText = 'Nilai Ulangan Harian: ' + nUlanganHarian.value
+            hUTS.innerText = 'Nilai UTS: ' + nUTS.value
+            hUAS.innerText = 'Nilai UAS: ' + nUAS.value
+            hNilaiAkhir.innerText = 'Nilai Akhir: ' + nAkhir(nTugas.value, nUlanganHarian.value, nUTS.value, nUAS.value)
+            hGrade.innerText = 'Grade: ' + gradeNilai(nilaiAkhir)
+        }
+
+    </script>
 </body>
+
 </html>
